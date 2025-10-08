@@ -16,9 +16,9 @@ version '5.1.2'
 
 repositories {
     maven {
-        url = uri(System.getProperty("mavenRepoUrl", "http://srvbuild2v.ipstest.sk:8081/artifactory/d2000"))
-        allowInsecureProtocol = true
+        url "http://srvbuild2v.ipstest.sk:8081/artifactory/d2000"
     }
+    allowInsecureProtocol = true
     mavenLocal()
     mavenCentral()
 }
