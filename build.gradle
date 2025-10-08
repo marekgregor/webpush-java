@@ -21,6 +21,15 @@ repositories {
 }
 
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'nl.martijndwars'
+            artifactId = 'webpush-java'
+            version = '5.2.0.B1'
+        }
+    }
+
     repositories {
         maven {
             name = "srvbuild2v"
