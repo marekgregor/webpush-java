@@ -12,15 +12,26 @@ apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'nl.martijndwars'
-version '5.1.2'
+version '5.2.0.B1'
 
 repositories {
-    maven {
-        url "http://srvbuild2v.ipstest.sk:8081/artifactory/d2000"
-    }
-    allowInsecureProtocol = true
+
     mavenLocal()
     mavenCentral()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "srvbuild2v"
+            url = uri(findProperty("mavenRepoUrl") ?: "http://srvbuild2v.ipstest.sk:8082/artifactory/d2000")
+            allowInsecureProtocol = true
+            credentials {
+                username = findProperty("mavenUser") ?: System.getenv("MAVEN_USER")
+                password = findProperty("mavenPassword") ?: System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
 }
 
 dependencies {
